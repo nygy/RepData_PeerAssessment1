@@ -1,10 +1,10 @@
 ---
 title: "Reproducible Research - Peer Assessment 1"
 author: "NyGy"
-date: "2015. július 21."
+date: "2015.08.07."
 output: html_document
 ---
-###Loading the data
+### Loading the data
 
 ```r
 setwd("~/R/reproducible research/Peer Assignment 01")
@@ -35,7 +35,7 @@ tail(dataset)
 ## 17567    NA 2012-11-30     2350
 ## 17568    NA 2012-11-30     2355
 ```
-###What is mean total number of steps taken per day? 
+### What is mean total number of steps taken per day? 
 
 *Calculate the total number of steps taken per day*
 
@@ -84,7 +84,7 @@ hist(daily.sum$Total.steps,
 *Calculate and report the mean and median of the total number of steps taken per day*
 
 ```r
-mean.daily.sum <- mean(daily.sum$Total.steps)
+mean.daily.sum <- round(mean(daily.sum$Total.steps), 2)
 mean.daily.sum 
 ```
 
@@ -100,10 +100,10 @@ median.daily.sum
 ```
 ## [1] 10395
 ```
-The mean  of the total number of steps taken per day is: **9354.2295082**  
+The mean  of the total number of steps taken per day is: **9354.23**  
 The median of the total number of steps taken per day is: **10395**  
 
-###What is the average daily activity pattern?
+### What is the average daily activity pattern?
 
 *Make a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)*
 
@@ -125,18 +125,18 @@ plot(mean.steps$Interval,mean.steps$Value,
 *Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?*
 
 ```r
-max.step <- subset(mean.steps, mean.steps$Value == max(mean.steps$Value))
+max.step <- round(subset(mean.steps, mean.steps$Value == max(mean.steps$Value)), 0)
 max.step
 ```
 
 ```
-##     Interval    Value
-## 104      835 206.1698
+##     Interval Value
+## 104      835   206
 ```
 The 5-minute interval that contains the maximum number of steps is the **835th** interval.  
-The maximum number of steps is: **206.1698113**
+The maximum number of steps is: **206**
 
-###Imputing missing values
+### Imputing missing values
 
 *Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)*
 
@@ -234,7 +234,7 @@ entirely.imputted.days
 ```
 **8 days** had not any initial number of steps data, these days were imputted entirely with mean values.
 
-###Are there differences in activity patterns between weekdays and weekends?
+### Are there differences in activity patterns between weekdays and weekends?
 
 *Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.*
 
